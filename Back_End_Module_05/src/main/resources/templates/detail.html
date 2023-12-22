@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeGym Sai Gon</title>
+</head>
+<body>
+<h1>Employee Detail</h1>
+<br>
+<h3 th:text="'Employee Code: ' + ${employeeDto.code}"></h3>
+<br>
+<h3 th:text="'Name: ' + ${employeeDto.name}"></h3>
+<br>
+<h3 th:text="'Salary: ' + ${employeeDto.salary}"></h3>
+<br>
+<h3 th:text="'Age: ' + ${employeeDto.age}"></h3>
+<br>
+<h3 th:each="branch : ${branchDtos}" th:if="${branch.id == employeeDto.brandId}" th:text="'Branch: ' + ${branch.name}"></h3>
+<br>
+<a th:href="@{/employee}">
+    Back to list
+</a>
+</body>
+</html>

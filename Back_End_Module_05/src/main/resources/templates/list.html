@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeGym Sai Gon</title>
+</head>
+<body>
+<div th:text="${message}" class="alert alert-warning" role="alert"></div>
+<h1>Employee Management</h1>
+<a th:href="@{/employee}">All</a>
+<div th:each="branch : ${branchDtos}">
+        <a th:href="@{/employee/branch/{id}(id = ${branch.id})}" th:text="${branch.name}"></a>
+</div>
+<br>
+<a th:href="@{/employee/create}">
+    <button>Add New Employee</button>
+</a>
+<br>
+<table>
+    <thead>
+    <tr>
+        <th>Employee Code</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Salary</th>
+        <th>Branch</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody class="align-middle">
+    <tr th:each="employee : ${employeeDtos}">
+        <td th:text="${employee.code}"></td>
+        <td>
+            <a th:href="@{/employee/{id}(id = ${employee.id})}" th:text="${employee.name}"></a>
+        </td>
+
+        <td th:text="${employee.age}"></td>
+        <td th:text="${employee.salary}"></td>
+        <td th:each="branch : ${branchDtos}" th:if="${branch.id == employee.brandId}" th:text="${branch.name}"></td>
+        <td>
+            <a th:href="@{/employee/{id}/view(id = ${employee.id})}">
+                <button>Update</button>
+            </a>
+            <a th:href="@{/employee/{id}/delete(id = ${employee.id})}">
+                <button>Delete</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

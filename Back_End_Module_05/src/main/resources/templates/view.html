@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeGym Sai Gon</title>
+</head>
+<body>
+<h1>Edit Employee</h1>
+<br>
+<form th:object="${employeeDto}" th:action="@{/employee/update}" method="post">
+    <label><b>Id</b></label>
+    <input type="number" th:field="*{id}" readonly>
+
+    <label><b>Employee Code</b></label>
+    <input type="text" placeholder="Nhập Employee Code" th:field="*{code}" required>
+
+    <label><b>Name</b></label>
+    <input type="text" placeholder="Nhập Name" th:field="*{name}" required>
+
+    <label><b>Age</b></label>
+    <input type="number" placeholder="Nhập Age" th:field="*{age}" required>
+
+    <label><b>Salary</b></label>
+    <input type="number" placeholder="Nhập Salary" th:field="*{salary}" required>
+
+    <label for="branchId"><b>Branch</b></label>
+    <select id="branchId" th:field="*{brandId}" required>
+        <option th:each="branch : ${branchDtos}" th:value="${branch.id}" th:text="${branch.name}"></option>
+    </select>
+    <button type="submit">Save</button>
+</form>
+<a th:href="@{/employee}">
+    <button>Cancel</button>
+</a>
+</body>
+</html>
